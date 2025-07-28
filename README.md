@@ -68,3 +68,67 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Draft Project SetUp
+
+This is the initial setup for the **Routine Builder** project — a web app that helps users create and manage custom routines. Future features will include timers, calendar integrations, and playlist support.
+
+---
+
+## 🚀 Project Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/AlexandraEL9/draft-project.git
+cd draft-project
+```
+2. Create a React App in the Current Folder
+```bash
+npx create-react-app .
+```
+If prompted to install create-react-app, type y.
+
+3. Open the Project in VS Code
+```bash
+code .
+```
+🧱 Folder Structure
+```css
+src/
+├── components/
+│   └── Button.js
+├── styles/
+│   ├── App.css
+│   └── Button.css
+├── App.js
+└── index.js
+```
+🧪 Run the App
+```bash
+npm start
+```
+This will open your app at http://localhost:3000
+
+### Fixes Applied
+✅ 1. Prevent node_modules from being committed
+Ensure .gitignore contains:
+```gitignore
+/node_modules
+/.pnp
+.pnp.js
+```
+If node_modules/ was already committed, remove it from Git tracking:
+```bash
+git rm -r --cached node_modules
+git commit -m "Remove node_modules from version control"
+```
+✅ Status
+- GitHub repo cloned
+- React app scaffolded
+- .gitignore verified
+- VS Code setup
+- App runs locally
+
+---
+
