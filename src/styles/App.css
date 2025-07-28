@@ -1,3 +1,11 @@
+/*
+App.css contains component-specific styles for the App.js component.
+
+It’s imported directly in App.js, so its styles apply only when App is rendered.
+
+This keeps styling modular and scoped to each component (a core React philosophy).
+*/
+
 body {
   font-family: Arial, sans-serif;
   margin: 2rem;

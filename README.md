@@ -104,6 +104,53 @@ src/
 ├── App.js
 └── index.js
 ```
+### 📁 Project File Structure (Explained)
+| Path                      | Type       | Description                                                                 |
+|---------------------------|------------|-----------------------------------------------------------------------------|
+| `src/`                   | Folder     | Main source folder for your React app’s code.                              |
+| `src/components/`        | Folder     | Contains reusable React components (e.g. `Button.js`).                     |
+| `src/components/Button.js` | JavaScript | A custom button component you created to reuse across the app.             |
+| `src/styles/`            | Folder     | Contains CSS files for styling components and the app.                     |
+| `src/styles/App.css`     | CSS        | Styles specific to the main `App` component (e.g. body, headings).         |
+| `src/styles/Button.css`  | CSS        | Styles for the custom `Button` component (e.g. color, border, padding).    |
+| `src/App.js`             | JavaScript | Main React component rendered to the page — acts like your homepage.       |
+| `src/index.js`           | JavaScript | Entry point of the React app — renders `App` to the root DOM element.      |
+
+### What is App.js?
+`App.js` is the main component of your React application. It serves as the top-level UI layout, and it's the first thing rendered by index.js. Think of it like the `<body>` of a traditional HTML page — it controls what appears on screen.
+
+### index.js
+🔍 Purpose:
+`index.js` is the entry point of your React app. It's the file that tells React:
+- What component to render (App)
+- Where in the HTML to inject it (<div id="root"> in index.html)
+
+### index.css
+🔍 Purpose:
+ This file usually holds global CSS styles, resets, or base typography.
+- It's applied before individual component styles like App.css.
+
+📂 Typical uses:
+- Set base font family or background color
+- Reset margin/padding for all elements
+- Define CSS variables or utility classes
+
+### App.css
+🔍 Purpose:
+- App.css contains component-specific styles for the App.js component.
+- It’s imported directly in App.js, so its styles apply only when App is rendered.
+- This keeps styling modular and scoped to each component (a core React philosophy).
+
+📂 Typical Uses:
+- Style elements defined inside App.js (e.g. headings, sections, layout)
+- Customize appearance of the homepage or main app view
+- Apply CSS classes used only within App.js
+
+| File        | Scope                 | Typical Use                             |
+| ----------- | --------------------- | --------------------------------------- |
+| `index.css` | Global (entire app)   | Reset styles, base fonts/colors         |
+| `App.css`   | Local (just `App.js`) | Page layout, headings, paragraphs, etc. |
+
 🧪 Run the App
 ```bash
 npm start

@@ -1,17 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// index.js is the entry point of your React app. It's the file that tells React:
+// What component to render (App)
+// Where in the HTML to inject it (<div id="root"> in index.html)
 
+// 1. Import React (core library for JSX and component rendering)
+import React from 'react';
+
+// 2. Import ReactDOM (handles rendering to the actual DOM in index.html)
+import ReactDOM from 'react-dom/client';
+
+// 3. Import global CSS styling (optional, usually resets or base styles)
+import './index.css';
+
+// 4. Import the top-level component of your app
+import App from './App';
+
+// 5. Find the root DOM node in index.html to attach the React app to
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// 6. Render the App component inside the root element
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
