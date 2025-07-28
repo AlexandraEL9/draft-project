@@ -12,6 +12,7 @@ import './styles/App.css';
 // Other imports for additional components
 import Header from './components/Header';
 import Navbar from './components/Navbar'; 
+import DateTime from './components/DateTime';
 import Footer from './components/Footer';
 import Routines from './components/Routines';
 
@@ -26,6 +27,7 @@ function App() {
       <main className="main">
         <Routines />
       </main>
+      <DateTime />
       <Footer />
     </div>
   );

@@ -30,5 +30,6 @@ body {
   justify-content: center; /* center horizontally */
   align-items: flex-start; /* align content to the top */
   padding-top: 2rem; /* space below the header */
+  padding-bottom: 2rem; /* space above the footer */
 }
 
