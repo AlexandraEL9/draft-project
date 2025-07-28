@@ -8,25 +8,26 @@ import React from 'react';
 // 2. Import the CSS file for styling this component
 import './styles/App.css';
 
-// 3. Import a custom Button component from the components folder
-import Button from './components/Button';
+
+// Other imports for additional components
+import Header from './components/Header';
+import Navbar from './components/Navbar'; 
+import Footer from './components/Footer';
+import Routines from './components/Routines';
+
 
 // 4. Define the App component using a function
+
 function App() {
   return (
-    // 5. React Fragment <> lets us return multiple elements without a wrapper div
-    <>
-      {/* 6. Heading: title of the app */}
-      <h1>Welcome to Routine Builder</h1>
-
-      {/* 7. Paragraph: brief app description */}
-      <p>Create custom routines to structure your day!</p>
-
-      {/* 8. Render the reusable Button component */}
-      <Button />
-    </>
+    <div className="app">
+      <Navbar />
+      <Header />
+      <main className="main">
+        <Routines />
+      </main>
+      <Footer />
+    </div>
   );
 }
-
-// 9. Export the App component so it can be used in index.js
 export default App;

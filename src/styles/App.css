@@ -6,13 +6,29 @@ It’s imported directly in App.js, so its styles apply only when App is rendere
 This keeps styling modular and scoped to each component (a core React philosophy).
 */
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
-  margin: 2rem;
   background-color: #f4f4f4;
   color: #333;
 }
 
-h1 {
-  color: #2c3e50;
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: flex-start; /* align content to the top */
+  padding-top: 2rem; /* space below the header */
+}
+

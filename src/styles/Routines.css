@@ -1,0 +1,12 @@
+/* Accordion.css */
+/* Make accordion header dark olive green with white text */
+.accordion-button {
+  background-color: #556B2F; /* Dark olive green */
+  color: white;
+}
+
+/* Accordion body: off-white background with black text */
+.accordion-body {
+  background-color: #f8f8f8; /* Off-white */
+  color: #000;
+}

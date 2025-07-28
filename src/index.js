@@ -2,11 +2,15 @@
 // What component to render (App)
 // Where in the HTML to inject it (<div id="root"> in index.html)
 
+// import bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // 1. Import React (core library for JSX and component rendering)
 import React from 'react';
 
 // 2. Import ReactDOM (handles rendering to the actual DOM in index.html)
 import ReactDOM from 'react-dom/client';
+
 
 // 3. Import global CSS styling (optional, usually resets or base styles)
 import './index.css';
@@ -16,6 +20,8 @@ import App from './App';
 
 // 5. Find the root DOM node in index.html to attach the React app to
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 
 // 6. Render the App component inside the root element
 root.render(
