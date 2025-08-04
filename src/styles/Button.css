@@ -1,0 +1,10 @@
+.Button-style {
+    background-color: rgb(143, 210, 233);
+    font-weight: bold;
+    color: rgb(146, 29, 19);
+    border: 1px solid;
+    border-radius: 10px;
+    font-size: 30px;
+    margin-top: 20px;
+    padding: 10px;
+}

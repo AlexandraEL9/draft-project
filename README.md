@@ -75,14 +75,22 @@ This is the initial setup for the **Routine Builder** project — a web app that
 
 ---
 
-## 🚀 Project Setup
+## 🚀 Project Setup & Planning
+This plan outlines the step-by-step development process for a full-stack Routine App using React (frontend) and MySQL (backend).
 
-### 1. Clone the Repository
+### 1. Create GitHub repo
+•	Create new repository on GitHub
+•	Clone locally
+•	Add basic README.md with project goals and stack
+
+### Clone the Repository
 
 ```bash
 git clone https://github.com/AlexandraEL9/draft-project.git
 cd draft-project
 ```
+
+### 2. Initialize React App
 2. Create a React App in the Current Folder
 ```bash
 npx create-react-app .
@@ -93,28 +101,21 @@ If prompted to install create-react-app, type y.
 ```bash
 code .
 ```
+```bash
+cd routine-app
+```
+
+### 3. Clean Boilerplate
+
 🧱 Folder Structure
-```css
+
+```bash
 src/
 ├── components/
-│   └── Button.js
+├── pages/
 ├── styles/
-│   ├── App.css
-│   └── Button.css
-├── App.js
-└── index.js
+└── utils/
 ```
-### 📁 Project File Structure (Explained)
-| Path                      | Type       | Description                                                                 |
-|---------------------------|------------|-----------------------------------------------------------------------------|
-| `src/`                   | Folder     | Main source folder for your React app’s code.                              |
-| `src/components/`        | Folder     | Contains reusable React components (e.g. `Button.js`).                     |
-| `src/components/Button.js` | JavaScript | A custom button component you created to reuse across the app.             |
-| `src/styles/`            | Folder     | Contains CSS files for styling components and the app.                     |
-| `src/styles/App.css`     | CSS        | Styles specific to the main `App` component (e.g. body, headings).         |
-| `src/styles/Button.css`  | CSS        | Styles for the custom `Button` component (e.g. color, border, padding).    |
-| `src/App.js`             | JavaScript | Main React component rendered to the page — acts like your homepage.       |
-| `src/index.js`           | JavaScript | Entry point of the React app — renders `App` to the root DOM element.      |
 
 ### What is App.js?
 `App.js` is the main component of your React application. It serves as the top-level UI layout, and it's the first thing rendered by index.js. Think of it like the `<body>` of a traditional HTML page — it controls what appears on screen.
@@ -151,6 +152,68 @@ src/
 | `index.css` | Global (entire app)   | Reset styles, base fonts/colors         |
 | `App.css`   | Local (just `App.js`) | Page layout, headings, paragraphs, etc. |
 
+### 4. Install Essentials
+
+```bash
+npm install react-router-dom bootstrap axios
+```
+
+### 5. Set Up Routing
+
+- Wrap app in `<BrowserRouter>`
+    - In index.js, wrap the <App /> component with <BrowserRouter>:
+    index.js
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom'; // ✅ Import
+import App from './App';
+import './index.css';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>   {/* ✅ Wrap App */}
+    <App />
+  </BrowserRouter>
+);
+```
+
+✅ 2. Create your page components
+Create one file per page inside src/pages/:
+- Create route skeletons:
+  - `Landing.js`
+  - `Login.js`
+  - `Routines.js`
+  - `EditRoutine.js`
+  - `PlayRoutine.js`
+  - `OurTeam.js`
+
+```bash
+src/pages/
+├── Landing.js
+├── Login.js
+├── Routines.js
+├── EditRoutine.js
+├── PlayRoutine.js
+└── OurTeam.js
+```
+
+- **Create page skeletons**
+```jsx
+import React from 'react';
+
+function Landing() {
+  return <h1>Welcome to Routine App</h1>;
+}
+
+export default Landing;
+```
+Do the same for the others — just return a simple <h1> placeholder for now.
+
+- Define routes in `App.js` or create `AppRoutes.js`
+
+---
+
 🧪 Run the App
 ```bash
 npm start
@@ -179,3 +242,28 @@ git commit -m "Remove node_modules from version control"
 
 ---
 
+# 📋 Routine Builder Database Schema
+
+```plaintext
+┌────────────┐         ┌──────────────┐         ┌────────────┐
+│  users     │         │  routines    │         │   steps    │
+├────────────┤         ├──────────────┤         ├────────────┤
+│ id (PK)    │◄────┐   │ id (PK)      │◄────┐   │ id (PK)    │
+│ username   │     │   │ user_id (FK) │     │   │ routine_id │ (FK)
+│ email      │     └───│ title        │     └───│ step_text  │
+│ password   │         │ created_at   │         │ step_order │
+│ display    │         └──────────────┘         └────────────┘
+│ theme      │
+│ created_at │
+└────────────┘
+
+Legend:
+PK = Primary Key
+FK = Foreign Key
+```
+
+- Each **user** can have multiple **routines** (1-to-many).
+- Each **routine** can have multiple **steps** (1-to-many).
+- `ON DELETE CASCADE` ensures that removing a user or routine also deletes linked data.
+
+---
