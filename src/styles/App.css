@@ -18,18 +18,21 @@ body {
   color: #333;
 }
 
+/* App.css or global.css */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
 .app {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
 }
 
-.main {
-  flex: 1;
-  display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: flex-start; /* align content to the top */
-  padding-top: 2rem; /* space below the header */
-  padding-bottom: 2rem; /* space above the footer */
+main {
+  flex-grow: 1; /* Pushes the footer down */
+  padding: 1rem;
 }
+
 

@@ -1,17 +1,32 @@
-import React from 'react';
-import '../styles/Navbar.css'; // Make sure this path is correct
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/Navbar.css'; // Create this CSS file for styling
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <nav className="navbar">
-      <h2>Routine Builder</h2>
-      <ul className="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Routines</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
+      <Link to="/" className="logo">RoutineApp</Link>
+
+      <button 
+        className="hamburger" 
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        ☰
+      </button>
+
+      {menuOpen && (
+        <div className="menu">
+          <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
+          <Link to="/routines" onClick={() => setMenuOpen(false)}>Routines</Link>
+          <Link to="/team" onClick={() => setMenuOpen(false)}>Our Team</Link>
+        </div>
+      )}
     </nav>
   );
 }
 
 export default Navbar;
+

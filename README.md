@@ -272,6 +272,237 @@ git commit -m "Remove node_modules from version control"
 
 ---
 
+## 🌐 Phase 2: UI Foundation
+
+### 1. Create Page Skeletons
+
+- Add `<h1>` or placeholder content to each page *(done above*)
+
+### 2. Design Reusable Components
+
+- `Navbar.js`
+- `Footer.js`
+- `Button.js`, `FormField.js`, etc.
+
+#### Create Navbar
+
+1. Create navbar component
+```jsx
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/Navbar.css'; // Create this CSS file for styling
+
+function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <nav className="navbar">
+      <Link to="/" className="logo">RoutineApp</Link>
+
+      <button 
+        className="hamburger" 
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        ☰
+      </button>
+
+      {menuOpen && (
+        <div className="menu">
+          <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
+          <Link to="/routines" onClick={() => setMenuOpen(false)}>Routines</Link>
+          <Link to="/team" onClick={() => setMenuOpen(false)}>Our Team</Link>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+export default Navbar;
+```
+
+2. Style
+```css
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: darkslategray;
+  color: white;
+  padding: 1rem;
+}
+
+.logo {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  right: 1rem;
+  top: 3.5rem;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu a {
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.menu a:hover {
+  background-color: #eee;
+}
+```
+
+3. Add to landing page
+```jsx
+import React from 'react';
+import Navbar from '../components/Navbar';
+
+function Landing() {
+  return (
+    <>
+      <Navbar />
+      <h1>Welcome to the Routine App</h1>
+    </>
+  );
+}
+
+export default Landing;
+```
+
+4. Add to other relevant pages
+
+- **Import the component**
+At the top of any page file (e.g., `Login.js`, `Routines.js`, etc.), import the Navbar:
+```js
+import Navbar from '../components/Navbar';
+```
+
+- **Include It in the Return Block**
+Wrap your page content with the `<Navbar />` like this:
+```jsx
+function Login() {
+  return (
+    <>
+      <Navbar />
+      <h1>Login Page</h1>
+      {/* Your login form goes here */}
+    </>
+  );
+}
+```
+
+#### Alternative as Navbar is on every page!!
+Using a Layout Component is the cleanest and most scalable approach — you define your persistent layout (e.g. Navbar + Footer) once, and then insert your routed pages inside it.
+
+✅ How to Use a Layout Wrapper for Shared Components
+🔧 1. Create a Layout.js File
+In your src/components folder:
+```jsx
+// src/components/Layout.js
+import React from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { Outlet } from 'react-router-dom';
+
+function Layout() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+export default Layout;
+```
+- `Outlet` is a placeholder that renders the child route component.
+- Navbar + Footer stay consistent across all pages.
+
+**🛠️ 2. Update Your Routes in App.js**
+Now nest your routes under a route that uses <Layout />:
+```jsx
+// src/App.js
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import './styles/App.css';
+
+import Layout from './components/Layout';
+
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Routines from './pages/Routines';
+import EditRoutine from './pages/EditRoutine';
+import PlayRoutine from './pages/PlayRoutine';
+import OurTeam from './pages/OurTeam';
+
+function App() {
+  return (
+    <div className="app">
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/routines" element={<Routines />} />
+          <Route path="/edit/:id" element={<EditRoutine />} />
+          <Route path="/play/:id" element={<PlayRoutine />} />
+          <Route path="/team" element={<OurTeam />} />
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Do same with footer.
+
+Ensure footer is always stuck to bottom of page with css
+In App.css:
+```css
+/* App.css or global.css */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1; /* Pushes the footer down */
+  padding: 1rem;
+}
+```
+✅ Now:
+- Navbar and Footer are shown automatically on every page
+- Each page file only contains its unique content — clean and efficient
+
 # 📋 Routine Builder Database Schema
 
 ```plaintext
