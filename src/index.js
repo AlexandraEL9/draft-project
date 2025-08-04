@@ -10,6 +10,7 @@ import React from 'react';
 
 // 2. Import ReactDOM (handles rendering to the actual DOM in index.html)
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
 
 // 3. Import global CSS styling (optional, usually resets or base styles)
@@ -26,6 +27,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // 6. Render the App component inside the root element
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter> {/* ✅ Wrap App in BrowserRouter */}
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
