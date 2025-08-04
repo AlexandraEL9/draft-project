@@ -210,8 +210,38 @@ export default Landing;
 ```
 Do the same for the others — just return a simple <h1> placeholder for now.
 
-- Define routes in `App.js` or create `AppRoutes.js`
+-**Define routes in `App.js` or create `AppRoutes.js`**
+### Set up routes
+Update your `App.js` file:
 
+```jsx
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Routines from './pages/Routines';
+import EditRoutine from './pages/EditRoutine';
+import PlayRoutine from './pages/PlayRoutine';
+import OurTeam from './pages/OurTeam';
+
+function App() {
+  return (
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/routines" element={<Routines />} />
+        <Route path="/edit/:id" element={<EditRoutine />} />
+        <Route path="/play/:id" element={<PlayRoutine />} />
+        <Route path="/team" element={<OurTeam />} />
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
+```
 ---
 
 🧪 Run the App

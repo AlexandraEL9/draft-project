@@ -4,17 +4,20 @@
 
 // 1. Import React library (required to use JSX)
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 // 2. Import the CSS file for styling this component
 import './styles/App.css';
 
+// import pages
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Routines from './pages/Routines';
+import EditRoutine from './pages/EditRoutine';
+import PlayRoutine from './pages/PlayRoutine';
+import OurTeam from './pages/OurTeam';
 
 // Other imports for additional components
-import Header from './components/Header';
-import Navbar from './components/Navbar'; 
-import DateTime from './components/DateTime';
-import Footer from './components/Footer';
-import Routines from './components/Routines';
 
 
 // 4. Define the App component using a function
@@ -22,13 +25,14 @@ import Routines from './components/Routines';
 function App() {
   return (
     <div className="app">
-      <Navbar />
-      <Header />
-      <main className="main">
-        <Routines />
-      </main>
-      <DateTime />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/routines" element={<Routines />} />
+        <Route path="/edit/:id" element={<EditRoutine />} />
+        <Route path="/play/:id" element={<PlayRoutine />} />
+        <Route path="/team" element={<OurTeam />} />
+      </Routes>
     </div>
   );
 }
