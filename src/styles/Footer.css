@@ -1,6 +1,6 @@
 .footer {
-  background-color: black;
-  color: white;
+  background: var(--peach);
+  color: var(--text-color);
   text-align: center;
   padding: 1rem;
 }
