@@ -14,7 +14,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 // 3. Import global CSS styling (optional, usually resets or base styles)
-import './index.css';
+import './index.css'; // ✅ make sure this is imported
+
 
 // 4. Import the top-level component of your app
 import App from './App';
