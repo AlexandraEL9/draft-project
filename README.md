@@ -503,6 +503,132 @@ main {
 - Navbar and Footer are shown automatically on every page
 - Each page file only contains its unique content — clean and efficient
 
+#### Landing page
+**Component Plan**
+| Section       | Component Name                            | Notes                                                            |
+| ------------- | ----------------------------------------- | ---------------------------------------------------------------- |
+| Top Nav       | `Navbar.js`                               | Already created                                                  |
+| Hero Section  | `Hero.js`                                 | Contains heading, supporting text, image, and "Log In" button    |
+| Feature Cards | `FeaturesCarousel.js` or `FeatureCard.js` | Reusable components with props for title, description, and image |
+| Footer        | `Footer.js`                               | Already created                                                  |
+
+**Colour Tokens**
+```css
+:root {
+  --text-color: #5F5C60;
+  --white: #FFFFFF;
+  --peach: #FCF3E2;
+  --pink: #FCEBDD;
+  --light-pink: #FFC9D2;
+  --pastel-blue: #B7D6FF;
+}
+```
+
+**Add component files to project folder:**
+```bash
+src/
+├── components/
+│   └── Hero.js
+│   └── Hero.css
+```
+
+**Build Hero Component**
+```jsx
+// import files
+import React from 'react';
+import './Hero.css';
+import { Link } from 'react-router-dom';
+
+// create function
+```
+
+#### Carousel Component
+**Add Files**
+```bash
+src/components/Carousel.js
+src/styles/Carousel.css
+```
+
+## 🗄️ Phase 4: Backend Setup
+
+### 1. Set Up Express
+
+```bash
+mkdir server
+cd server
+npm init -y
+npm install express mysql2 cors dotenv
+```
+**untrack node_modules**
+Create a .gitignore file in your server/ folder (if it doesn’t exist yet):
+```bash
+touch .gitignore
+```
+Add this line to .gitignore: `node_modules/`
+
+If you've already added it to Git:
+Run the following commands to untrack the folder:
+```bash
+git rm -r --cached node_modules
+git commit -m "Remove node_modules from version control"
+```
+
+### 2. MySQL Connection
+
+✅ Step 1: Create .env for DB Credentials
+📁 File: server/.env
+This file stores sensitive config (like database credentials) and should not be tracked by Git.
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=your_mysql_user
+DB_PASSWORD=your_mysql_password
+DB_NAME=routine_app
+```
+✨ Tip: Add .env to your .gitignore file to keep it private:
+
+```bash
+Copy
+Edit
+echo ".env" >> .gitignore
+```
+
+- Create `db.js` for connection pool
+📁 File: server/db.js
+This file sets up and exports a MySQL connection pool, which improves performance by reusing connections.
+```js
+// db.js
+const mysql = require('mysql2');
+require('dotenv').config();
+
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
+
+module.exports = pool.promise();
+```
+pool.promise() gives you promise-based methods (useful with async/await).
+
+The .env values are injected via dotenv.
+
+### 3. Express Routes
+
+- `GET /routines`
+- `POST /login`
+- `POST /routines`
+- `PUT /routines/:id`
+- `DELETE /routines/:id`
+- `GET /steps?routine_id=x`
+
+### 4. Test with Postman
+
 # 📋 Routine Builder Database Schema
 
 ```plaintext
