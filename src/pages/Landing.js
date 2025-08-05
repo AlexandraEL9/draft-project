@@ -1,13 +1,15 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import Carousel from '../components/Carousel';
 
 function Landing() {
   return (
-    <>
-      <h1>Welcome to Routine App</h1>
+    <main>
       <Hero />
-    </>
+      <Carousel />
+    </main>
   );
 }
+
 
 export default Landing;
