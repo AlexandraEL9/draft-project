@@ -7,7 +7,7 @@ const slides = [
     title: 'Create',
     text: 'Create and edit custom routines that work for you',
     image: heroImage,
-    bgColor: 'var(--mint)' // define in :root if not already
+    bgColor: 'var(--mint)'
   },
   {
     title: 'Play',

@@ -629,28 +629,14 @@ The .env values are injected via dotenv.
 
 ### 4. Test with Postman
 
+### Routines Page
+
 # 📋 Routine Builder Database Schema
-
-```plaintext
-┌────────────┐         ┌──────────────┐         ┌────────────┐
-│  users     │         │  routines    │         │   steps    │
-├────────────┤         ├──────────────┤         ├────────────┤
-│ id (PK)    │◄────┐   │ id (PK)      │◄────┐   │ id (PK)    │
-│ username   │     │   │ user_id (FK) │     │   │ routine_id │ (FK)
-│ email      │     └───│ title        │     └───│ step_text  │
-│ password   │         │ created_at   │         │ step_order │
-│ display    │         └──────────────┘         └────────────┘
-│ theme      │
-│ created_at │
-└────────────┘
-
-Legend:
-PK = Primary Key
-FK = Foreign Key
-```
-
-- Each **user** can have multiple **routines** (1-to-many).
-- Each **routine** can have multiple **steps** (1-to-many).
-- `ON DELETE CASCADE` ensures that removing a user or routine also deletes linked data.
+📋 Step-by-Step Breakdown
+1. Back-End: Create the GET /routines route ✅ (We’ll start here in detail)
+2. Front-End: Create RoutinesList component
+3. Front-End: Fetch routines from backend
+4. Front-End: Map and display routines with icons
+5. Bonus: Add loading/error states and placeholder
 
 ---
