@@ -1,46 +1,43 @@
-import React, { useState, useEffect } from 'react';
-// useState stores the fetched username
-// useEffect fetches the username when the component mounts
+import React, { useEffect, useState } from 'react';
 import '../styles/Header.css';
 
 function Header() {
-  /* State to hold the username
-     Initially set to an empty string
-     This will be updated once the data is fetched
-     useState remembers the value (username) across renders
-     and triggers a re-render when the value changes
-  */
   const [username, setUsername] = useState('');
+  const userId = localStorage.getItem('userId');
 
-  // useEffect runs after the component mounts
-  // the [] dependency array means it runs only once
-  // It fetches the user data from the backend
   useEffect(() => {
-    // For now, hardcode the user ID (1) until you have authentication
-    // Fetch the user data from the backend
-    // Adjust the URL to match your backend setup
-    fetch('http://localhost:5000/api/users/1')
-    // When the fetch completes, convert the response to JSON
-      .then((res) => res.json())
-      // This is an asynchronous operation, so we use .then() to handle the result
-      .then((data) => {
-        // Check that data exists and has a username property.
-        if (data && data.username) {
-          // If so, update our username state with setUsername(data.username)
-          setUsername(data.username);
-        }
-      })
-      // If anything goes wrong (network issue, backend error, invalid JSON),
-      // this will log the error to the console
-      .catch((err) => console.error('Error fetching user:', err));
-  }, []);
+    if (!userId) { setUsername('Guest'); return; }
 
-  // Render the header with a greeting
-  // If username is not set yet, show "Loading..."
+    const load = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/users/${userId}`);
+
+        if (!res.ok) {
+          // read error safely (could be HTML)
+          const ct = res.headers.get('content-type') || '';
+          if (ct.includes('application/json')) {
+            console.error('User fetch failed:', await res.json());
+          } else {
+            console.error('User fetch failed (non-JSON):', await res.text());
+          }
+          setUsername('Guest');
+          return;
+        }
+
+        const data = await res.json(); // { username: 'alice' }
+        if (data?.username) setUsername(data.username);
+      } catch (err) {
+        console.error('Network error fetching user:', err);
+        setUsername('Guest');
+      }
+    };
+
+    load();
+  }, [userId]);
+
   return (
     <header className="header">
       <h1>
-        {/* If username is available, greet the user; otherwise, show "Loading..." */}
         {username ? `Hi ${username}! Let's get started with your routine` : 'Loading...'}
       </h1>
     </header>

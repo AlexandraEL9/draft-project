@@ -70,7 +70,7 @@ app.post('/api/register', (req, res) => {
 });
 
 // POST /api/login  -> authenticate existing user
-app.post('/api/login', (req, res) => {
+app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   // Guard rails
