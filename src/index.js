@@ -7,18 +7,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // 1. Import React (core library for JSX and component rendering)
 import React from 'react';
-
-// 2. Import ReactDOM (handles rendering to the actual DOM in index.html)
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 
+import reportWebVitals from './reportWebVitals';
 
-// 3. Import global CSS styling (optional, usually resets or base styles)
-import './index.css'; // ✅ make sure this is imported
-
-
-// 4. Import the top-level component of your app
-import App from './App';
+import Landing from './pages/Landing.js';
+import Login from './pages/Login.js';
+import Routines from './pages/Routines.js';
+import EditRoutine from './pages/EditRoutine.js';
+import PlayRoutine from './pages/PlayRoutine.js';
+import About from './pages/OurTeam.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // 5. Find the root DOM node in index.html to attach the React app to
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -28,8 +27,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // 6. Render the App component inside the root element
 root.render(
   <React.StrictMode>
-    <BrowserRouter> {/* ✅ Wrap App in BrowserRouter */}
-      <App />
-    </BrowserRouter>
+    <Router>
+      <Routes>
+        <Route path="/" index element={<Landing />} />
+        <Route path="/login" element={<Login />} />{" "}
+        <Route path="/routines" element={<Routines />} />
+        <Route path="/routines/edit" element={<EditRoutine />} />
+        <Route path="/routines/play" element={<PlayRoutine />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
