@@ -1,4 +1,4 @@
-// src/App.js
+// App.js
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './styles/App.css';
@@ -16,13 +16,16 @@ function App() {
   return (
     <div className="app">
       <Routes>
+        {/* All pages wrapped by Layout (Navbar + Footer) */}
         <Route element={<Layout />}>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/routines" element={<Routines />} />
-          <Route path="/edit/:id" element={<EditRoutine />} />
-          <Route path="/play/:id" element={<PlayRoutine />} />
+          <Route path="/routines/edit/:id" element={<EditRoutine />} />
+          <Route path="/routines/play/:id" element={<PlayRoutine />} />
           <Route path="/team" element={<OurTeam />} />
+          {/* Optional 404 fallback */}
+          <Route path="*" element={<div style={{padding:'2rem'}}>Page not found</div>} />
         </Route>
       </Routes>
     </div>
