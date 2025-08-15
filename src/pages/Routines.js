@@ -1,10 +1,11 @@
 import React from 'react';
+import Header from '../components/Header'; // Adjust the path as necessary
 
 
 function Routines() {
   return (
     <>
-      <h1>Welcome to Routine App</h1>
+      <Header />
     </>
   );
 }
