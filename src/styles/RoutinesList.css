@@ -1,0 +1,52 @@
+.routines {
+  padding: 1rem;
+}
+
+.routines__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.routines__title {
+  margin: 0;
+}
+
+.routines__list {
+  list-style: none;
+  padding: 0;
+}
+
+.routine-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.routine-card__info h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+.btn--secondary {
+  background: #ddd;
+  color: #333;
+  border-radius: 4px;
+}
