@@ -2,7 +2,7 @@ import "../index.scss";
 import Footer from "../components/footer/Footer.js";
 import Navbar from "../components/navbar/Navbar.js";
 
-function PlayRoutine() {
+function About() {
   return (
     <>
       <Navbar />
@@ -10,4 +10,4 @@ function PlayRoutine() {
     </>
   );
 }
-export default PlayRoutine
+export default About

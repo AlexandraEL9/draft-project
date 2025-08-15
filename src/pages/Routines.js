@@ -1,14 +1,12 @@
-import React from 'react';
-import Header from '../components/Header';
-import RoutinesList from '../components/RoutinesList';
+import "../index.scss";
+import Footer from "../components/footer/Footer.js";
+import Navbar from "../components/navbar/Navbar.js";
 
-function Routines() {
-  return (
-    <>
-      <Header />
-      <RoutinesList />
-    </>
-  );
+function Routines(){
+    return(
+<>
+<Navbar/>
+<Footer/>
+</>)
 }
-
-export default Routines;
+export default Routines

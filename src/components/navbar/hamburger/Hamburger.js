@@ -1,7 +1,7 @@
-import "../../../index.scss";
+//import "../../../index.scss";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./hamburger.css"; 
+import "./Hamburger.css"; 
 
 
 function Hamburger() {

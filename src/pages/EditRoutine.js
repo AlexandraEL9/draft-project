@@ -1,12 +1,18 @@
-import React from 'react';
+import "../index.scss";
+import Footer from "../components/footer/Footer.js";
+import Navbar from "../components/navbar/Navbar.js";
+import Carousel from "../components/carousel/carousel.js";
+import Hero from "../components/hero/Hero.js";
 
-
-function EditRoutine() {
+function Landing() {
   return (
     <>
-      <h1>Edit Your Routine</h1>
+      <Navbar/>
+        <Hero/>
+        <Carousel/> 
+      <Footer />
     </>
   );
 }
 
-export default EditRoutine;
+export default Landing;

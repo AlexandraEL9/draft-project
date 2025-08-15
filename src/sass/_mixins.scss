@@ -1,0 +1,30 @@
+// Different text styles
+@mixin titleText {
+    font-weight: 600;
+    font-size: 1.5 rem;
+}
+
+@mixin taskNamesText {
+    font-weight: 400;
+    font-size: 1.5 rem;
+}
+
+@mixin paragraphText {
+    font-weight: 300;
+    font-size: 1.5 rem;
+}
+
+@mixin buttonText {
+    font-weight: 500;
+    font-size: 1.5 rem;
+}
+
+@mixin placeholderText {
+    font-weight: 400;
+    font-size: 1.5 rem;
+}
+
+@mixin copyrightText {
+    font-weight: 500;
+    font-size: 1.5 rem;
+}

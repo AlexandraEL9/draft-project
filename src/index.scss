@@ -1,0 +1,58 @@
+@import './sass/variables';
+@import './sass/mixins'; 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+ 
+* {
+    font-family: "Poppins", sans-serif;
+    color: $textColor;
+ }
+
+html body{
+   background-color: $white;
+   margin: 0%;
+   padding: 0%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+// Main div container
+.container {
+   @include container;
+}
+
+// text styles
+
+// title text
+h1 {
+   @include titleText;
+}
+
+//task names text
+h2 {
+   @include taskNamesText;
+}
+
+// paragraph text
+p {
+   @include paragraphText;
+}
+
+// Button text
+
+h3 {
+   @include buttonText;
+}
+
+// Place holder text
+
+.placeholder {
+   @include placeholderText;
+}
+
+// copyright text
+
+h4 {
+   @include copyrightText;
+}

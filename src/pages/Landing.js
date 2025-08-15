@@ -1,15 +1,18 @@
-import React from 'react';
-import Hero from '../components/Hero';
-import Carousel from '../components/Carousel';
+import "../index.scss";
+import Footer from "../components/footer/Footer.js";
+import Navbar from "../components/navbar/Navbar.js";
+import Carousel from "../components/carousel/carousel.js";
+import Hero from "../components/hero/Hero.js";
 
 function Landing() {
   return (
-    <main>
-      <Hero />
-      <Carousel />
-    </main>
+    <>
+      <Navbar/>
+        <Hero/>
+        <Carousel/> 
+      <Footer />
+    </>
   );
 }
-
 
 export default Landing;
